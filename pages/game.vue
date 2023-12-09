@@ -39,14 +39,16 @@ async function click() {
     <main class="flex flex-1 flex-col md:flex-row">
       <UCard class="w-[350px] max-h-[200px] md:max-h-[unset] overflow-auto">
         <div class="space-y-4">
-          <div v-for="[player, points] of sortedPlayers" class=" flex justify-between">
-            <kbd :class="[$signalr.connectionId === player ? 'font-bold' : 'opacity-80']">
-              {{ player }}
-            </kbd>
-            <UBadge :color="$signalr.connectionId === player ? 'purple' : undefined">
-              {{ points }}
-            </UBadge>
-          </div>
+          <LazyClientOnly>
+            <div v-for="[player, points] of sortedPlayers" class=" flex justify-between">
+              <kbd :class="[$signalr.connectionId === player ? 'font-bold' : 'opacity-80']">
+                {{ player }}
+              </kbd>
+              <UBadge :color="$signalr.connectionId === player ? 'purple' : undefined">
+                {{ points }}
+              </UBadge>
+            </div>
+          </LazyClientOnly>
         </div>
       </UCard>
 

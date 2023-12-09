@@ -1,14 +1,14 @@
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
 export default defineNuxtPlugin(async () => {
-  const { public: { signalRUrl } } = useRuntimeConfig()
+  const { public: { apiUrl } } = useRuntimeConfig()
 
   const connection = new HubConnectionBuilder()
-    .withUrl(signalRUrl)
+    .withUrl(`${apiUrl}/Position`)
     .build();
 
   await connection.start();
-  
+
   return {
     provide: {
       signalr: connection

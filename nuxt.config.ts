@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   runtimeConfig: {
     public: {
-      signalRUrl: 'http://localhost:5021/Position'
+      apiUrl: 'http://localhost:5021'
     }
   }
 })

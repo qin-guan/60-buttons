@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { $signalr } = useNuxtApp()
+
 const buttonPosition = useState('button-position', () => ({
   x: Math.random(),
   y: Math.random()
@@ -8,7 +10,13 @@ const state = ref({
   hardcore: false
 })
 
-function click() {
+onMounted(() => {
+  $signalr.on("newPosition", console.log)
+})
+
+async function click() {
+  await $signalr.send("click")
+
   if (state.value.hardcore) {
     buttonPosition.value = {
       x: Math.random() * 5,

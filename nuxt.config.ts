@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   runtimeConfig: {
     public: {
-      apiUrl: 'http://localhost:5021'
+      apiUrl: process.env.NUXT_PUBLIC_API_URL || 'http://localhost:5021'
     }
   }
 })
